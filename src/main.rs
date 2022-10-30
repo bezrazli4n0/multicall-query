@@ -1,14 +1,11 @@
-mod args;
-
-use args::Args;
 use clap::Parser;
-use multicall_query::Config;
+use multicall_query::state::{Args, Config};
 use std::process;
 
 #[tokio::main]
 async fn main() {
     let args = Args::parse();
-    let config = Config::build(args.url).unwrap_or_else(|error| {
+    let config = Config::build(&args).unwrap_or_else(|error| {
         eprintln!("Unable to create `Config`: {error}");
         process::exit(1);
     });
