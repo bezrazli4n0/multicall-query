@@ -50,28 +50,28 @@ impl Config {
         })
     }
 
-    pub fn get_multicall_address(&self) -> Address {
-        self.multicall_address
+    pub fn get_multicall_address(&self) -> &Address {
+        &self.multicall_address
     }
 
     pub fn get_export_format(&self) -> ExportFormat {
         self.export_format
     }
 
-    pub fn get_export_path(&self) -> String {
-        self.export_path.clone()
+    pub fn get_export_path(&self) -> &str {
+        &self.export_path
     }
 
-    pub fn get_target_abi(&self) -> Abi {
-        self.target_abi.clone()
+    pub fn get_target_abi(&self) -> &Abi {
+        &self.target_abi
     }
 
-    pub fn get_target_func_name(&self) -> String {
-        self.target_func_name.clone()
+    pub fn get_target_func_name(&self) -> &str {
+        &self.target_func_name
     }
 
-    pub fn get_target_addresses(&self) -> Vec<Address> {
-        self.target_addresses.clone()
+    pub fn get_target_addresses(&self) -> &Vec<Address> {
+        &self.target_addresses
     }
 
     pub fn get_client(&self) -> sync::Arc<Provider<Http>> {

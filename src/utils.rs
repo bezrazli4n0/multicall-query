@@ -3,6 +3,9 @@ use anyhow::Error;
 use ethers::{abi, prelude::*};
 use std::{fs, io};
 
+/// Saves `results` into file, provided by `export_path`.
+///
+/// Output format specified by `export_format`.
 pub fn export_results(
     block_number: U256,
     results: Vec<(String, Vec<abi::Token>)>,

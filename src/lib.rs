@@ -7,11 +7,11 @@ use ethers::{abi as ethers_abi, prelude::*};
 
 pub async fn run(config: &state::Config) -> Result<()> {
     let client = config.get_client();
-    let multicall = abi::IMultiCallABI::new(config.get_multicall_address(), client);
+    let multicall = abi::IMultiCallABI::new(*config.get_multicall_address(), client);
 
     let target_abi = config.get_target_abi();
     let target_addresses = config.get_target_addresses();
-    let target_func = target_abi.function(&config.get_target_func_name())?;
+    let target_func = target_abi.function(config.get_target_func_name())?;
 
     let payload_func = target_func.encode_input(&[])?;
     let payload: Vec<(Address, Bytes)> = target_addresses
